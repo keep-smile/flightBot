@@ -1,0 +1,26 @@
+{
+    "name": "myChatBot",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "development",
+            "endpoint": "http://localhost:2001/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        },
+        {
+                    "type": "luis",
+                    "name": "FlightBot",
+                    "appId": "5ae6bc31-3858-4006-bfae-229c91db20de",
+                    "version": "0.1",
+                    "authoringKey": "a620ade28d0844fd89b782562954757f",
+                    "subscriptionKey": "",
+                    "region": "westus",
+                    "id": "2"
+                }
+    ],
+    "padlock": "",
+
+    "version": "2.0"
+}
