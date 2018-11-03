@@ -16,7 +16,7 @@ Uses wide range of LUIS and BotFramework features. Successful Ticket Buys saves 
 
 # Installation
 
-###To install:
+### To install:
 npm i<br />
 Edit .env file with your environment<br />
 npm start<br />
