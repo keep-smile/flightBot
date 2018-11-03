@@ -2,13 +2,13 @@ const mongoose = require('lib/mongoose'),
     Schema = mongoose.Schema;
 
 const ticket = new Schema({
-    firstName: {type: String},
-    lastName: {type: String},
+    personName: {type: String},
+    ticketClass: {type: String},
     cityFrom: {type: String},
     cityTo: {type: String},
-    ticketType: {type: String}
+    ticketBuyConfirmed: {type: String},
 
 });
 
 
-exports.Ticket = mongoose.model('Ticket', ticket);
+exports.TicketDB = mongoose.model('TicketDB', ticket);

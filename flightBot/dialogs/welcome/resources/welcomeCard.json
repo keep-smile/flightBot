@@ -1,0 +1,64 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "text": "<h3>Welcome to the Flight Bot!</h3>",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "default",
+            "isSubtle": "yes",
+            "text": "Here you can order flight in the automated mode.",
+
+
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "spacing": "medium",
+            "size": "default",
+            "weight": "bolder",
+            "text": "Available commands:",
+            "wrap": true,
+            "maxLines": 0
+        },
+        {
+            "type": "TextBlock",
+            "size": "default",
+            "isSubtle": "yes",
+            "text": "<ul><li><b>Help</b> - get list of commands.</li><li><b>Buy</b> - to start order process.</li><li><b>My tickets</b> - check list of your tickets.</li><li><b>Cancel</b> - cancel current operation.</li><li><b>Admin</b> - FlightBot management.</li></ul>",
+
+
+            "wrap": true,
+            "maxLines": 0
+        }
+
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Buy Ticket",
+            "data": {
+                "intent": "TicketBuy"
+            }
+        },
+        {
+            "type": "Action.Submit",
+            "title": "Check your tickets",
+            "data": {
+                "intent": "TicketList"
+            }
+        }
+    ]
+
+}

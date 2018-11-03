@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Buy a ticket",
+    "intent": "TicketBuy",
+    "entities": []
+  },
+  {
+    "text": "Show commands",
+    "intent": "Help",
+    "entities": []
+  },
+  {
+    "text": "List your tickets",
+    "intent": "TicketList",
+    "entities": []
+  }
+]
