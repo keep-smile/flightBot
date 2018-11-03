@@ -1,13 +1,13 @@
 {
   "name": "FlightBot",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "author": {
     "name": "Bogdan",
     "email": "bogdan.zubakin@gmail.com"
   },
   "private": true,
   "scripts": {
-    "start": "NODE_PATH='.:./flightBot/' node ./bin/www"
+    "start": "NODE_PATH='.' node ./bin/www"
   },
   "repository": {
     "type": "git",
