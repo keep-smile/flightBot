@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-const {MessageFactory} = require('botbuilder');
+
 const {TicketBuyOutcome, TicketBuyResult, ticketBuyStatus} = require('./createTicketBuyPropertyResult');
 const {LUIS_ENTITIES} = require('../helpers');
 
 // Consts for LUIS entities.
 const PERSON_NAME_ENTITY = LUIS_ENTITIES.personName;
-// const USER_LAST_NAME_ENTITY = LUIS_ENTITIES.user_last_name;
+
 const TICKET_CLASS_ENTITY = LUIS_ENTITIES.ticket_class;
 const CITY_FROM_ENTITY = LUIS_ENTITIES.city_from;
 const CITY_TO_ENTITY = LUIS_ENTITIES.city_to;
-const USER_NAME_PATTERN_ANY_ENTITY = LUIS_ENTITIES.user_name_patternAny;
+
 const CONFIRMATION_ENTITY = LUIS_ENTITIES.confirmationList;
 
 const UserNameMinLength = 4;
@@ -40,17 +40,16 @@ class TicketBuyProperty {
    * @param {Number} partySize number of guests in reservation
    * @param {String} location reservation location
    */
-  constructor(id, personName, ticketClass, cityFrom, cityTo, ticketBuyConfirmed, needsChange, metaData) {
+  constructor(id, personName, ticketClass, cityFrom, cityTo, ticketBuyConfirmed, needsChange) {
     this.id = id || getGuid();
     this.personName = personName || '';
-    // this.userLastName = userLastName || '';
     this.ticketClass = ticketClass || '';
     this.cityFrom = cityFrom || '';
     this.cityTo = cityTo || '';
     
     this.ticketBuyConfirmed = ticketBuyConfirmed || false;
     this.needsChange = needsChange || undefined;
-    this.metaData = metaData || {};
+    
   }
   
   /**
@@ -61,7 +60,6 @@ class TicketBuyProperty {
   get haveCompleteTicketBuy() {
     return ((this.id !== undefined) &&
       (this.personName !== '') &&
-      // (this.userLastName !== '') &&
       (this.ticketClass !== '') &&
       (this.cityTo !== '') &&
       (this.cityFrom !== ''));
@@ -106,7 +104,6 @@ class TicketBuyProperty {
     let groundedProperties = '';
     if (this.ticketClass !== '') groundedProperties += ` ${ this.ticketClass } class ticket`;
     if (this.personName !== '') groundedProperties += ` for ${ this.personName }`;
-    // if (this.userLastName !== '') groundedProperties += ` ${ this.userLastName }`;
     if (this.cityFrom !== '') groundedProperties += ` from ${ this.cityFrom }`;
     if (this.cityTo !== '') groundedProperties += ` to ${ this.cityTo }`;
     
@@ -190,7 +187,6 @@ const validate = function (onTurnProperty, returnResult) {
   let ticketClassEntity = onTurnProperty.entities.find(item => item.entityName === TICKET_CLASS_ENTITY);
   let cityFromEntity = onTurnProperty.entities.find(item => item.entityName === CITY_FROM_ENTITY);
   let cityToEntity = onTurnProperty.entities.find(item => item.entityName === CITY_TO_ENTITY);
-  // let locationEntity = onTurnProperty.entities.find(item => item.entityName === LOCATION_ENTITY);
   let confirmationEntity = onTurnProperty.entities.find(item => item.entityName === CONFIRMATION_ENTITY);
   
   if (personNameEntity !== undefined &&
@@ -213,14 +209,8 @@ const validate = function (onTurnProperty, returnResult) {
   ) {
   
     let correctCityFrom;
-    // if (cityFromEntity.entityValue[1] !== undefined) {
-    //   correctCityFrom = cityFromEntity.entityValue[1];
-    // } else {
-    //   correctCityFrom = cityFromEntity.entityValue[0];
-    // }
-  
-    correctCityFrom = cityFromEntity.entityValue[0];
     
+    correctCityFrom = cityFromEntity.entityValue[0];
     
     if (correctCityFrom.length < CityMinLength) {
       returnResult.outcome.push(new TicketBuyOutcome('Sorry. City name should be longer than 4 chars!', CITY_FROM_ENTITY));
@@ -245,8 +235,6 @@ const validate = function (onTurnProperty, returnResult) {
     } else {
       correctCityTo = cityToEntity.entityValue[0];
     }
-    
-    // correctCityTo = cityToEntity.entityValue[1];
     
     
     if (correctCityTo.length < CityMinLength) {

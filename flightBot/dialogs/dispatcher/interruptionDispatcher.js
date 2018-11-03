@@ -1,10 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
+
 const {ComponentDialog} = require('botbuilder-dialogs');
-const {HelpDialog} = require('../help');
-const {TicketBuyDialog} = require('../ticketBuy');
-const {TicketListDialog} = require('../ticketList');
-const {AdminDialog} = require('../admin');
 const {LuisRecognizer} = require('botbuilder-ai');
 const {OnTurnProperty} = require('../shared/stateProperties');
 
@@ -96,8 +93,6 @@ class InterruptionDispatcher extends ComponentDialog {
     switch (onTurnProperty.intent) {
       // Help, ChitChat and QnA share the same QnA Maker model. So just call the QnA Dialog.
       
-      // case HelpDialog.Name:
-      // return await dc.beginDialog(QnADialog.Name);
       case TICKET_BUY_DIALOG_NAME:
       case TICKET_LIST_DIALOG_NAME:
       case ADMIN_DIALOG_NAME:
@@ -112,4 +107,4 @@ class InterruptionDispatcher extends ComponentDialog {
 }
 
 
-module.exports.InterruptionDispatcher = InterruptionDispatcher
+module.exports.InterruptionDispatcher = InterruptionDispatcher;

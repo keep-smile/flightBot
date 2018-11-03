@@ -1,5 +1,5 @@
 const {LuisRecognizer} = require('botbuilder-ai');
-const {DialogSet, DialogTurnStatus} = require('botbuilder-dialogs');
+const {DialogSet} = require('botbuilder-dialogs');
 const {ActivityTypes, CardFactory, MessageFactory} = require('botbuilder');
 
 const {OnTurnProperty} = require('./dialogs/shared/stateProperties');
@@ -10,7 +10,6 @@ const {MainDispatcher} = require('./dialogs/dispatcher');
 // State properties
 const ON_TURN_PROPERTY = 'onTurnStateProperty';
 const DIALOG_STATE_PROPERTY = 'dialogStateProperty';
-const USER_PROFILE_PROPERTY = 'userProfile';
 
 
 class FlightBot {
@@ -42,45 +41,6 @@ class FlightBot {
     this.conversationState = conversationState;
     this.userState = userState;
     
-    /*
-    // Create state property accessors.
-    this.onTurnAccessor = conversationState.createProperty(ON_TURN_PROPERTY);
-    this.dialogAccessor = conversationState.createProperty(DIALOG_STATE_PROPERTY);
-    
-    // Add main dispatcher.
-    this.dialogs = new DialogSet(this.dialogAccessor);
-    
-    this.dialogs.add(new MainDispatcher(botConfig, this.onTurnAccessor, conversationState, userState));
-    
-    this.conversationState = conversationState;
-    this.userState = userState;
-    
-    const LUIS_CONFIGURATION = 'FlightBot';
-    
-    
-    const luisConfig = botConfig.findServiceByNameOrId(LUIS_CONFIGURATION);
-    
-    
-    if (!luisConfig || !luisConfig.appId) throw new Error('Missing LUIS configuration. Please follow README.MD to create required LUIS applications.\n\n');
-    
-    this.luisRecognizer = new LuisRecognizer({
-      applicationId: luisConfig.appId,
-      endpoint: luisConfig.getEndpoint(),
-      // CAUTION: Its better to assign and use a subscription key instead of authoring key here.
-      endpointKey: luisConfig.authoringKey
-    });
-    
-    // Create the property accessors for user and conversation state
-    // this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
-    // this.dialogState = conversationState.createProperty(DIALOG_STATE_PROPERTY);
-    
-    // Create top-level dialog(s)
-    this.dialogs = new DialogSet(this.dialogState);
-    // Add the Greeting dialog to the set
-    // this.dialogs.add(new GreetingDialog(GREETING_DIALOG, this.userProfileAccessor));
-    
-    this.conversationState = conversationState;
-    this.userState = userState;*/
   }
   
   /**
@@ -179,12 +139,9 @@ Admin - administration features.
       for (var idx in turnContext.activity.membersAdded) {
         // Greet anyone that was not the target (recipient) of this message
         // 'bot' is the recipient for events from the channel,
-        // turnContext.activity.membersAdded === turnContext.activity.recipient.Id indicates the
+        
         // bot was added to the conversation.
         if (turnContext.activity.membersAdded[idx].id !== turnContext.activity.recipient.id) {
-          // Welcome user.
-          // await turnContext.sendActivity(`Hello, I am the Contoso Cafe Bot!`);
-          // await turnContext.sendActivity(`I can help book a table and more..`);
           
           // Send welcome card.
           await turnContext.sendActivity(MessageFactory.attachment(CardFactory.adaptiveCard(WelcomeCard)));

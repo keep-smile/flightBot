@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-const {ComponentDialog, DialogSet, DialogTurnStatus} = require('botbuilder-dialogs');
+const {ComponentDialog, DialogSet,  DialogTurnStatus} = require('botbuilder-dialogs');
 const {MessageFactory, CardFactory} = require('botbuilder');
 const {LuisRecognizer} = require('botbuilder-ai');
 
@@ -26,7 +26,7 @@ const TICKET_BUY_PROPERTY = 'ticketBuyProperty';
 const NONE_INTENT = 'None';
 const CANCEL_INTENT = 'Cancel';
 
-// Query property from ../whatCanYouDo/resources/whatCanYHouDoCard.json
+
 // When user responds to what can you do card, a query property is set in response.
 const QUERY_PROPERTY = 'query';
 
@@ -61,9 +61,9 @@ module.exports = {
       this.onTurnAccessor = onTurnAccessor;
       
       // add dialogs
-      // this.dialogs = new DialogSet(this.mainDispatcherAccessor);
+      this.dialogs = new DialogSet(this.mainDispatcherAccessor);
       this.addDialog(new AdminDialog(botConfig, conversationState, this.userProfileAccessor, onTurnAccessor));
-      // this.addDialog(new QnADialog(botConfig, this.userProfileAccessor));
+      
       this.addDialog(new TicketBuyDialog(botConfig, conversationState, this.userProfileAccessor, onTurnAccessor, this.ticketBuyAccessor));
       // this.addDialog(new TicketListDialog(botConfig, this.reservationAccessor, onTurnAccessor, this.userProfileAccessor, conversationState));
       
@@ -183,9 +183,9 @@ module.exports = {
       
       // Start appropriate child dialog based on intent
       switch (onTurnProperty.intent) {
-        // Help, ChitChat and QnA share the same QnA Maker model. So just call the QnA Dialog.
+        
         case HelpDialog.Name:
-          // return await dc.beginDialog(HelpDialog.Name);
+          
           return await dc.context.sendActivity(MessageFactory.attachment(CardFactory.adaptiveCard(WelcomeCard)));
         
         case TicketListDialog.Name:

@@ -5,12 +5,12 @@ const {MessageFactory} = require('botbuilder');
 const {ComponentDialog, ConfirmPrompt, WaterfallDialog} = require('botbuilder-dialogs');
 const GetTicketBuyFields = require('../shared/prompts/getTicketBuyFields').GetTicketBuyFields;
 const {TicketBuyProperty} = require('../shared/stateProperties');
-// const {ticketBuyStatus} = require('../shared/stateProperties/createTicketBuyPropertyResult');
+
 const {InterruptionDispatcher} = require('../dispatcher/interruptionDispatcher');
 const TicketDB = require('models/ticket').TicketDB;
-// const {UserProfile} = require('../shared/stateProperties');
 
-const {LUIS_INTENTS, LUIS_ENTITIES, GenSuggestedQueries} = require('../shared/helpers');
+
+const {LUIS_INTENTS, GenSuggestedQueries} = require('../shared/helpers');
 
 // This dialog's name. Matches the name of the LUIS intent from ../dispatcher/resources/cafeDispatchModel.lu
 const TICKET_BUY_DIALOG = LUIS_INTENTS.TicketBuy;
@@ -56,7 +56,6 @@ module.exports = {
       
       // Add water fall dialog with two steps.
       this.addDialog(new WaterfallDialog(DIALOG_START, [
-        // this.askForUserName.bind(this),
         this.getAllRequiredProperties.bind(this),
         this.greetUser.bind(this)
       ]));
@@ -74,7 +73,7 @@ module.exports = {
       
       // When user decides to abandon this dialog, we need to confirm user action. Add confirmation prompt
       this.addDialog(new ConfirmPrompt(CONFIRM_CANCEL_PROMPT));
-      // return await dc.prompt(CONFIRM_CANCEL_PROMPT, `Are you sure you want to cancel?`);
+      
     }
     
     static get Name() {
@@ -125,12 +124,7 @@ module.exports = {
       if (step.result) {
         const userProfile = await this.userProfileAccessor.get(step.context);
         await step.context.sendActivity(`You have succesfully bought ticket: `);
-  
         
-  
-  
-        
-  
         let reservationFromState = await this.ticketBuyAccessor.get(step.context);
         
         let ticket = new TicketDB(reservationFromState).save();

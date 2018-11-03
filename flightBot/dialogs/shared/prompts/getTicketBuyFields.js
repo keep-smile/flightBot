@@ -5,7 +5,7 @@ const {TextPrompt} = require('botbuilder-dialogs');
 const {LuisRecognizer} = require('botbuilder-ai');
 
 const {TicketBuyProperty, ticketBuyStatusEnum, OnTurnProperty} = require('../stateProperties');
-// Dialog name from ../../bookTable/resources/turn-N.lu
+
 const CONTINUE_PROMPT_INTENT = 'getTicketBuyFields';
 const HELP_INTENT = 'Help';
 const CANCEL_INTENT = 'Cancel';
@@ -52,14 +52,7 @@ module.exports = {
               await validatorContext.context.sendActivity(`What would you like to change?`);
               await validatorContext.context.sendActivity(MessageFactory.suggestedActions(['No changes'], `You can say things like 'ticket from New York to Dublin' or 'buy First class ticket'...`));
             } else {
-              // Greet user with name if we have the user profile set.
-              // const userProfile = await this.userProfileAccessor.get(validatorContext.context);
-              // if (userProfile !== undefined && userProfile.userName !== '') {
-              //   await validatorContext.context.sendActivity('Alright ' + userProfile.userName + ', your ticket is almost ready! ' + newTicketBuy.confirmationReadOut());
-              // } else {
-              //
-              // }
-  
+              
               await validatorContext.context.sendActivity('So, here is what I got from you: ' + newTicketBuy.confirmationReadOut());
               await validatorContext.context.sendActivity(MessageFactory.suggestedActions(['Yes', 'Edit', 'Cancel'], `Should I go ahead with this buy?`));
             }
@@ -229,8 +222,9 @@ module.exports = {
       if (!newTicketBuy.haveCompleteTicketBuy) {
         instance.state.options.prompt = newTicketBuy.getMissingPropertyReadOut();
       } else {
-        await context.sendActivity('Ok. I have a table for ' + newTicketBuy.confirmationReadOut());
-        instance.state.options.prompt = `Should I go ahead and book the table?`;
+        await context.sendActivity('So, here is what I got from you: ' + newTicketBuy.confirmationReadOut());
+        instance.state.options.prompt = await MessageFactory.suggestedActions(['Yes', 'Edit', 'Cancel'], `Should I go ahead with this buy?`);
+        
       }
       return await super.repromptDialog(context, instance);
     }
