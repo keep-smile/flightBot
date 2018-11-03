@@ -6,6 +6,6 @@ module.exports = {
     TicketBuyDialog: require('./ticketBuy').TicketBuyDialog,
     TicketListDialog: require('./ticketList').TicketListDialog,
     AdminDialog: require('./admin').AdminDialog,
-    HelpDialog: require('./help').HelpDialog,
+    
 
 };

@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-
 const {ComponentDialog} = require('botbuilder-dialogs');
+
 const {LuisRecognizer} = require('botbuilder-ai');
 const {OnTurnProperty} = require('../shared/stateProperties');
+
 
 const NONE_INTENT = 'None';
 const TICKET_BUY_DIALOG_NAME = 'TicketBuy';
@@ -35,10 +36,6 @@ class InterruptionDispatcher extends ComponentDialog {
     this.onTurnAccessor = onTurnAccessor;
     
     // add dialogs
-    // this.addDialog(new TicketBuyDialog(botConfig, conversationState, userProfileAccessor, onTurnAccessor, ticketBuyAccessor));
-    // this.addDialog(new TicketListDialog());
-    
-    // this.addDialog(new AdmintDialog());
     
     // add recognizer
     const luisConfig = botConfig.findServiceByNameOrId(LUIS_CONFIGURATION);

@@ -128,7 +128,7 @@ class TicketBuyProperty {
    */
   helpReadOut() {
     if (this.ticketClass === '') {
-      return `You can buy First or Second class tickets.`;
+      return `FYI: You can use fast buy with this example for example "Buy first class ticket for John Doe from New York to Kiev"`;
     } else return '';
   }
 }

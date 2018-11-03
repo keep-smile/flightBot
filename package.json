@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "NODE_PATH=. node ./bin/www"
+    "start": "NODE_PATH='.:./flightBot/' node ./bin/www"
   },
   "repository": {
     "type": "git",

@@ -6,11 +6,9 @@ const LUIS_ENTITIES_LIST = ['personName', 'ticket_class', 'geographyV2_city', 'c
 
 const LUIS_ENTITIES = {
     personName: 'personName',
-    // user_last_name: 'user_last_name',
     ticket_class: 'ticket_class',
     city_from: 'geographyV2_city',
     city_to: 'geographyV2_city',
-    // city_to: 'city_to',
     user_name_patternAny: 'userName_patternAny',
     confirmationList: 'confirmationList'
 };

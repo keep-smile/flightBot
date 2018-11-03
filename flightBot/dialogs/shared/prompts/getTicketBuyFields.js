@@ -174,7 +174,7 @@ module.exports = {
         case INTERRUPTIONS_INTENT:
         default:
           // Provide contextual help before handling interruptions.
-          // await dc.context.sendActivity('Just so you know .. ' + updateResult.newTicketBuy.helpReadOut());
+          await dc.context.sendActivity('' + updateResult.newTicketBuy.helpReadOut());
           // if we picked up new entity values, do not treat this as an interruption
           if (onTurnProperties.entities.length !== 0 || Object.keys(LUISResults.entities).length > 1) break;
           // Handle interruption.
