@@ -36,9 +36,7 @@
             "type": "TextBlock",
             "size": "default",
             "isSubtle": "yes",
-            "text": "<ul><li><b>Help</b> - get list of commands.</li><li><b>Buy</b> - to start order process.</li><li><b>My tickets</b> - check list of your tickets.</li><li><b>Cancel</b> - cancel current operation.</li><li><b>Admin</b> - FlightBot management.</li></ul>",
-
-
+            "text": "<ul><li><b>Help</b> - get list of commands.</li><li><b>Buy</b> - to start order process.</li><li><b>My tickets</b> - check list of your tickets.</li><li><b>Cancel</b> - cancel current operation.</li></ul>",
             "wrap": true,
             "maxLines": 0
         }

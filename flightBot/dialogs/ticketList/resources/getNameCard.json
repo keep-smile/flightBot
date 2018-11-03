@@ -15,26 +15,13 @@
                             "type": "TextBlock",
                             "size": "extraLarge",
                             "weight": "bolder",
-                            "text": "Contoso Cafe"
+                            "text": "Flight Bot"
                         },
                         {
                             "type": "TextBlock",
                             "size": "medium",
-                            "text": "Just want to make sure I get this right .. ",
+                            "text": "Type name which you used to buy tickets to get list of your buys",
                             "wrap": true
-                        }
-                    ],
-                    "width": "auto"
-                },
-                {
-                    "type": "Column",
-                    "spacing": "medium",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "horizontalAlignment": "center",
-                            "url": "http://contosocafeontheweb.azurewebsites.net/assets/contoso_logo_black.png",
-                            "size": "medium"
                         }
                     ],
                     "width": "auto"
@@ -43,7 +30,7 @@
         },
 		{
 			"type": "Input.Text",
-			"placeholder": "Please type in your name..",
+			"placeholder": "Please type in your full name..",
 			"style": "text",
 			"maxLength": 0,
 			"id": "userName"
@@ -54,7 +41,7 @@
             "type": "Action.Submit",
             "title": "Submit",
             "data": {
-                "intent": "Who_are_you"
+                "intent": "TicketList"
             }
         }
     ],

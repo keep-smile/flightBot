@@ -119,8 +119,9 @@ class FlightBot {
 Buy - to start order process.
 My tickets - check list of your tickets.
 Cancel - cancel current operation.
-Admin - administration features.
+
 `);
+      //Admin - administration features.
       return true; // this is an interruption
     }
     return false; // this is not an interruption

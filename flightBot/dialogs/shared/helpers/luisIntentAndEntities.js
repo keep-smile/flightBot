@@ -10,6 +10,7 @@ const LUIS_ENTITIES = {
     city_from: 'geographyV2_city',
     city_to: 'geographyV2_city',
     user_name_patternAny: 'userName_patternAny',
+    userName: 'userName',
     confirmationList: 'confirmationList'
 };
 // List of all intents this bot will recognize. THis includes intents from the following LUIS models:

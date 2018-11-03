@@ -65,7 +65,7 @@ module.exports = {
       this.addDialog(new AdminDialog(botConfig, conversationState, this.userProfileAccessor, onTurnAccessor));
       
       this.addDialog(new TicketBuyDialog(botConfig, conversationState, this.userProfileAccessor, onTurnAccessor, this.ticketBuyAccessor));
-      // this.addDialog(new TicketListDialog(botConfig, this.reservationAccessor, onTurnAccessor, this.userProfileAccessor, conversationState));
+      this.addDialog(new TicketListDialog(botConfig, conversationState, this.userProfileAccessor, onTurnAccessor));
       
       // add recognizer
       const luisConfig = botConfig.findServiceByNameOrId(LUIS_CONFIGURATION);

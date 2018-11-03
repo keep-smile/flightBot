@@ -2,6 +2,6 @@
 // Licensed under the MIT License.
 
 module.exports = {
+    GetUserNamePrompt: require('./getUserNamePrompt'),
     
-    GetTicketBuyFields: require('./GetTicketBuyFields').GetTicketBuyFields
 };
