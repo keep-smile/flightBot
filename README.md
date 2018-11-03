@@ -17,9 +17,9 @@ Uses wide range of LUIS and BotFramework features. Successful Ticket Buys saves 
 # Installation
 
 ### To install:
-npm i<br />
-Edit .env file with your environment<br />
-npm start<br />
+- npm i
+- Edit .env file with your environment
+- npm start
 
 # Known issues
 - No Ticket Dialogue cleanup after successful buy or cancel
